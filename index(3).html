@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>أبو الصلح | استشارات وتدريب على فض النزاعات</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16242A;
+    --ink-light:#20343B;
+    --ink-lighter:#2B444C;
+    --sand:#EFE6D3;
+    --sand-dim:#C9BFA8;
+    --brass:#C69B4C;
+    --brass-dim:#8F7038;
+    --sage:#5C7A72;
+    --rust:#8B4A34;
+    --radius:2px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+  body{
+    background:var(--ink);
+    color:var(--sand);
+    font-family:'Tajawal', sans-serif;
+    line-height:1.8;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Aref Ruqaa', serif;
+    font-weight:700;
+    line-height:1.3;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1100px; margin:0 auto; padding:0 28px;}
+  .eyebrow{
+    font-size:13px;
+    letter-spacing:2px;
+    color:var(--brass);
+    font-weight:700;
+    margin-bottom:14px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:24px;
+    height:1px;
+    background:var(--brass);
+    display:inline-block;
+  }
+
+  /* ===== Nav ===== */
+  header{
+    position:fixed;
+    top:0; right:0; left:0;
+    z-index:100;
+    background:rgba(22,36,42,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(198,155,76,0.15);
+  }
+  nav{
+    max-width:1100px;
+    margin:0 auto;
+    padding:16px 28px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .logo{
+    font-family:'Aref Ruqaa', serif;
+    font-size:22px;
+    font-weight:700;
+    color:var(--sand);
+  }
+  .logo span{color:var(--brass);}
+  .nav-links{
+    display:flex;
+    gap:32px;
+    font-size:15px;
+    font-weight:500;
+  }
+  .nav-links a{
+    position:relative;
+    padding:4px 0;
+    transition:color .25s;
+  }
+  .nav-links a::after{
+    content:"";
+    position:absolute;
+    bottom:0; right:0;
+    width:0; height:1px;
+    background:var(--brass);
+    transition:width .3s;
+  }
+  .nav-links a:hover{color:var(--brass);}
+  .nav-links a:hover::after{width:100%;}
+  .nav-toggle{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:6px;
+  }
+  .nav-toggle span{
+    width:24px; height:2px;
+    background:var(--sand);
+    display:block;
+  }
+
+  /* ===== Hero ===== */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    padding-top:80px;
+    overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute;
+    inset:0;
+    z-index:0;
+    opacity:0.55;
+  }
+  .hero-content{
+    position:relative;
+    z-index:2;
+    max-width:720px;
+  }
+  .hero h1{
+    font-size:clamp(42px, 7vw, 76px);
+    color:var(--sand);
+    margin-bottom:22px;
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--brass);
+  }
+  .hero p.lead{
+    font-size:19px;
+    color:var(--sand-dim);
+    max-width:560px;
+    margin-bottom:36px;
+  }
+  .cta-row{display:flex; gap:16px; flex-wrap:wrap;}
+  .btn{
+    display:inline-block;
+    padding:15px 32px;
+    border-radius:var(--radius);
+    font-weight:700;
+    font-size:15px;
+    transition:transform .25s, box-shadow .25s, background .25s, color .25s;
+    border:1px solid transparent;
+  }
+  .btn-primary{
+    background:var(--brass);
+    color:var(--ink);
+  }
+  .btn-primary:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 24px rgba(198,155,76,0.25);
+  }
+  .btn-ghost{
+    border-color:rgba(239,230,211,0.35);
+    color:var(--sand);
+  }
+  .btn-ghost:hover{
+    border-color:var(--brass);
+    color:var(--brass);
+  }
+  .scroll-hint{
+    position:absolute;
+    bottom:36px;
+    right:28px;
+    font-size:12px;
+    letter-spacing:1px;
+    color:var(--sand-dim);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .scroll-hint .line{
+    width:1px; height:36px;
+    background:linear-gradient(var(--brass), transparent);
+  }
+
+  /* ===== Section generic ===== */
+  section{padding:110px 0;}
+  .section-head{max-width:620px; margin-bottom:56px;}
+  .section-head h2{font-size:clamp(30px,4vw,44px); color:var(--sand);}
+  .section-head p{color:var(--sand-dim); font-size:17px; margin-top:16px;}
+
+  /* ===== About ===== */
+  .about{
+    background:var(--ink-light);
+    border-top:1px solid rgba(198,155,76,0.12);
+    border-bottom:1px solid rgba(198,155,76,0.12);
+  }
+  .about-grid{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:64px;
+    align-items:center;
+  }
+  .about-mark{
+    aspect-ratio:1;
+    border:1px solid rgba(198,155,76,0.35);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+  }
+  .about-mark::before{
+    content:"";
+    position:absolute;
+    inset:22px;
+    border:1px solid rgba(198,155,76,0.2);
+    border-radius:50%;
+  }
+  .about-mark svg{width:46%; height:46%;}
+  .about-text p{color:var(--sand-dim); font-size:17px; margin-bottom:18px;}
+  .about-text strong{color:var(--sand); font-weight:700;}
+  .stat-row{
+    display:flex;
+    gap:40px;
+    margin-top:32px;
+    flex-wrap:wrap;
+  }
+  .stat b{
+    display:block;
+    font-family:'Aref Ruqaa', serif;
+    font-size:34px;
+    color:var(--brass);
+  }
+  .stat span{
+    font-size:13px;
+    color:var(--sand-dim);
+  }
+
+  /* ===== Services ===== */
+  .services-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:rgba(198,155,76,0.15);
+    border:1px solid rgba(198,155,76,0.15);
+  }
+  .service-card{
+    background:var(--ink);
+    padding:40px 32px;
+    transition:background .3s;
+  }
+  .service-card:hover{background:var(--ink-light);}
+  .service-card .num{
+    font-family:'Aref Ruqaa', serif;
+    color:var(--brass-dim);
+    font-size:15px;
+    margin-bottom:22px;
+    display:block;
+  }
+  .service-card h3{
+    font-size:23px;
+    color:var(--sand);
+    margin-bottom:14px;
+  }
+  .service-card p{
+    color:var(--sand-dim);
+    font-size:15px;
+  }
+
+  /* ===== Process ===== */
+  .process{background:var(--ink-light);}
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:40px;
+    counter-reset:step;
+  }
+  .step{position:relative; padding-right:0;}
+  .step .step-num{
+    font-family:'Aref Ruqaa', serif;
+    font-size:52px;
+    color:transparent;
+    -webkit-text-stroke:1px var(--brass);
+    display:block;
+    margin-bottom:18px;
+  }
+  .step h3{font-size:19px; color:var(--sand); margin-bottom:10px;}
+  .step p{color:var(--sand-dim); font-size:15px;}
+
+  /* ===== Contact ===== */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1.2fr;
+    gap:64px;
+  }
+  .contact-info p{color:var(--sand-dim); font-size:16px; margin-bottom:28px;}
+  .info-line{
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    margin-bottom:20px;
+    font-size:15px;
+  }
+  .info-line .k{color:var(--brass); font-weight:700; min-width:70px;}
+  .info-line .v{color:var(--sand-dim);}
+
+  form{display:flex; flex-direction:column; gap:20px;}
+  .field{display:flex; flex-direction:column; gap:8px;}
+  .field label{font-size:14px; color:var(--sand-dim); font-weight:500;}
+  .field input, .field textarea{
+    background:var(--ink-light);
+    border:1px solid rgba(239,230,211,0.18);
+    border-radius:var(--radius);
+    padding:14px 16px;
+    color:var(--sand);
+    font-family:'Tajawal', sans-serif;
+    font-size:15px;
+    transition:border-color .25s, background .25s;
+    resize:vertical;
+  }
+  .field input:focus, .field textarea:focus{
+    outline:none;
+    border-color:var(--brass);
+    background:var(--ink-lighter);
+  }
+  .field.error input, .field.error textarea{border-color:var(--rust);}
+  .error-msg{
+    font-size:13px;
+    color:#d98a72;
+    min-height:16px;
+  }
+  .row-2{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  .submit-btn{
+    background:var(--brass);
+    color:var(--ink);
+    border:none;
+    padding:16px 36px;
+    border-radius:var(--radius);
+    font-family:'Tajawal', sans-serif;
+    font-weight:700;
+    font-size:15px;
+    cursor:pointer;
+    align-self:flex-start;
+    transition:transform .25s, box-shadow .25s, opacity .25s;
+  }
+  .submit-btn:hover{transform:translateY(-2px); box-shadow:0 10px 24px rgba(198,155,76,0.25);}
+  .submit-btn:disabled{opacity:.6; cursor:not-allowed; transform:none; box-shadow:none;}
+  .form-status{
+    font-size:15px;
+    padding:14px 18px;
+    border-radius:var(--radius);
+    display:none;
+  }
+  .form-status.show{display:block;}
+  .form-status.success{background:rgba(92,122,114,0.18); color:#a9c9be; border:1px solid rgba(92,122,114,0.4);}
+
+  /* ===== Footer ===== */
+  footer{
+    border-top:1px solid rgba(198,155,76,0.15);
+    padding:36px 0;
+  }
+  .footer-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:16px;
+    font-size:13px;
+    color:var(--sand-dim);
+  }
+
+  /* ===== Reveal ===== */
+  .reveal{opacity:0; transform:translateY(24px); transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ===== Responsive ===== */
+  @media (max-width: 860px){
+    .nav-links{
+      position:fixed;
+      top:64px; right:0; left:0;
+      background:var(--ink);
+      flex-direction:column;
+      padding:24px 28px;
+      gap:20px;
+      border-bottom:1px solid rgba(198,155,76,0.15);
+      transform:translateY(-130%);
+      transition:transform .35s;
+    }
+    .nav-links.open{transform:translateY(0);}
+    .nav-toggle{display:flex;}
+    .about-grid{grid-template-columns:1fr; gap:40px;}
+    .about-mark{max-width:220px; margin:0 auto;}
+    .services-grid{grid-template-columns:1fr;}
+    .steps{grid-template-columns:1fr; gap:32px;}
+    .contact-grid{grid-template-columns:1fr;}
+    .row-2{grid-template-columns:1fr;}
+    section{padding:76px 0;}
+  }
+
+  :focus-visible{outline:2px solid var(--brass); outline-offset:3px;}
+
+  /* ===== Quick contact float buttons ===== */
+  .quick-contact{
+    position:fixed;
+    bottom:28px;
+    left:28px;
+    z-index:200;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .qc-btn{
+    position:relative;
+    width:58px;
+    height:58px;
+    border-radius:50%;
+    background:var(--brass);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 8px 22px rgba(0,0,0,0.35);
+    transition:transform .25s, box-shadow .25s;
+  }
+  .qc-btn:hover{
+    transform:translateY(-3px) scale(1.05);
+    box-shadow:0 12px 28px rgba(198,155,76,0.35);
+  }
+  .qc-btn svg{width:26px; height:26px;}
+  .qc-btn.qc-call{background:var(--ink-lighter); border:1px solid rgba(198,155,76,0.4);}
+  .qc-btn .wa-ring{
+    position:absolute;
+    inset:0;
+    border-radius:50%;
+    border:1.5px solid var(--brass);
+    animation:wa-pulse 2.4s ease-out infinite;
+  }
+  @keyframes wa-pulse{
+    0%{transform:scale(1); opacity:.6;}
+    100%{transform:scale(1.6); opacity:0;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .qc-btn .wa-ring{animation:none; display:none;}
+  }
+  @media (max-width: 860px){
+    .quick-contact{bottom:20px; left:20px; gap:12px;}
+    .qc-btn{width:52px; height:52px;}
+  }
+
+  /* ===== Orders section ===== */
+  .orders-tabs{display:flex; gap:12px; margin-bottom:40px; flex-wrap:wrap;}
+  .tab-btn{
+    padding:12px 26px;
+    border-radius:var(--radius);
+    border:1px solid rgba(239,230,211,0.18);
+    background:var(--ink-light);
+    color:var(--sand-dim);
+    font-family:'Tajawal', sans-serif;
+    font-size:14px;
+    font-weight:700;
+    cursor:pointer;
+    transition:all .25s;
+  }
+  .tab-btn.active{background:var(--brass); color:var(--ink); border-color:var(--brass);}
+  .tab-panel{display:none;}
+  .tab-panel.active{display:block;}
+  .field select{
+    background:var(--ink-light);
+    border:1px solid rgba(239,230,211,0.18);
+    border-radius:var(--radius);
+    padding:14px 16px;
+    color:var(--sand);
+    font-family:'Tajawal', sans-serif;
+    font-size:15px;
+    transition:border-color .25s, background .25s;
+  }
+  .field select:focus{outline:none; border-color:var(--brass); background:var(--ink-lighter);}
+  .field select option{background:var(--ink-light); color:var(--sand);}
+  .star-rating{display:flex; gap:8px;}
+  .star-rating button{
+    background:none;
+    border:none;
+    cursor:pointer;
+    font-size:30px;
+    line-height:1;
+    color:rgba(239,230,211,0.25);
+    transition:color .2s, transform .2s;
+    padding:0;
+  }
+  .star-rating button.active{color:var(--brass);}
+  .star-rating button:hover{transform:scale(1.15);}
+  .order-card{
+    background:var(--ink-light);
+    border:1px solid rgba(198,155,76,0.15);
+    border-radius:var(--radius);
+    padding:24px;
+    margin-bottom:16px;
+  }
+  .order-card-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:12px;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .order-type{font-weight:700; color:var(--sand); font-size:16px;}
+  .order-status{
+    font-size:12px;
+    padding:5px 14px;
+    border-radius:20px;
+    background:rgba(198,155,76,0.15);
+    color:var(--brass);
+    font-weight:700;
+  }
+  .order-meta{
+    font-size:13px;
+    color:var(--sand-dim);
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+  }
+  .order-empty{
+    color:var(--sand-dim);
+    font-size:15px;
+    text-align:center;
+    padding:50px 0;
+  }
+
+  /* ===== Admin panel ===== */
+  .admin-link{
+    position:fixed;
+    bottom:10px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:11px;
+    color:rgba(239,230,211,0.25);
+    z-index:150;
+  }
+  .admin-overlay{
+    position:fixed; inset:0; z-index:1000;
+    background:rgba(10,16,18,0.92);
+    display:none; align-items:center; justify-content:center; padding:24px;
+  }
+  .admin-overlay.show{display:flex;}
+  .admin-box{
+    background:var(--ink-light);
+    border:1px solid rgba(198,155,76,0.25);
+    border-radius:var(--radius);
+    padding:40px; max-width:400px; width:100%;
+  }
+  .admin-box h3{color:var(--sand); margin-bottom:20px; font-size:22px;}
+  .admin-box input{width:100%; margin-bottom:14px;}
+  .admin-box .error-msg{margin-bottom:10px;}
+  .admin-panel{
+    position:fixed; inset:0; z-index:999;
+    background:var(--ink);
+    display:none; overflow-y:auto; padding:40px 0 80px;
+  }
+  .admin-panel.show{display:block;}
+  .admin-header{
+    display:flex; justify-content:space-between; align-items:center;
+    margin-bottom:32px; flex-wrap:wrap; gap:16px;
+  }
+  .admin-header h2{color:var(--sand); font-size:26px;}
+  .admin-close{
+    background:none; border:1px solid rgba(239,230,211,0.3); color:var(--sand);
+    padding:10px 22px; border-radius:var(--radius); cursor:pointer; font-family:'Tajawal',sans-serif; font-size:14px;
+  }
+  .admin-close:hover{border-color:var(--brass); color:var(--brass);}
+  .admin-order-card{
+    background:var(--ink-light);
+    border:1px solid rgba(198,155,76,0.15);
+    border-radius:var(--radius);
+    padding:22px; margin-bottom:14px;
+  }
+  .admin-order-top{
+    display:flex; justify-content:space-between; align-items:flex-start; gap:12px; flex-wrap:wrap;
+    margin-bottom:14px;
+  }
+  .admin-order-name{font-weight:700; color:var(--sand); font-size:17px;}
+  .admin-order-type{color:var(--brass); font-size:14px; margin-top:4px;}
+  .admin-order-details{
+    display:grid; grid-template-columns:1fr 1fr; gap:6px 20px;
+    font-size:14px; color:var(--sand-dim); margin-bottom:12px;
+  }
+  .admin-order-notes{
+    font-size:14px; color:var(--sand-dim); background:var(--ink);
+    padding:10px 14px; border-radius:var(--radius); margin-bottom:14px;
+  }
+  .admin-status-badge{
+    font-size:12px; padding:5px 14px; border-radius:20px; font-weight:700;
+    background:rgba(198,155,76,0.15); color:var(--brass);
+  }
+  .admin-status-badge.replied{background:rgba(92,122,114,0.25); color:#a9c9be;}
+  .admin-mark-btn{
+    background:var(--sage); color:var(--ink); border:none;
+    padding:9px 20px; border-radius:var(--radius); font-weight:700;
+    cursor:pointer; font-size:13px; font-family:'Tajawal',sans-serif;
+  }
+  .admin-mark-btn:disabled{opacity:.5; cursor:default;}
+  .admin-empty{color:var(--sand-dim); text-align:center; padding:60px 0;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">أبو <span>الصلح</span></div>
+    <button class="nav-toggle" id="navToggle" aria-label="فتح القائمة" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a href="#home">الرئيسية</a>
+      <a href="#about">عن أبو الصلح</a>
+      <a href="#services">الخدمات</a>
+      <a href="#orders">اطلب خدمة</a>
+      <a href="#contact">تواصل</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <svg id="knotSvg" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+      <path id="pathA" d="M -50 120 C 200 120, 250 300, 450 300 S 700 480, 950 480"
+            fill="none" stroke="#C69B4C" stroke-width="1.5" opacity="0.55"/>
+      <path id="pathB" d="M -50 480 C 200 480, 250 300, 450 300 S 700 120, 950 120"
+            fill="none" stroke="#5C7A72" stroke-width="1.5" opacity="0.55"/>
+      <circle cx="450" cy="300" r="5" fill="#C69B4C" opacity="0.9"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <div class="hero-content">
+      <div class="eyebrow">استشارات وتدريب على فض النزاعات والوساطة</div>
+      <h1>حين يلتقي طرفان على خلاف،<br><em>نصنع من بينهما اتفاقاً.</em></h1>
+      <p class="lead">أبو الصلح مساحة استشارية وتدريبية لكل من يبحث عن طريق للتفاهم — سواء كان خلافاً عائلياً، نزاعاً تجارياً، أو فريق عمل يحتاج من يعيد ترتيب الحوار بينه.</p>
+      <div class="cta-row">
+        <a href="#services" class="btn btn-primary">تصفّح الخدمات</a>
+        <a href="#contact" class="btn btn-ghost">تواصل معنا</a>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint"><span class="line"></span>مرّر لتكتشف المزيد</div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-mark reveal">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 35 Q50 15 80 35" stroke="#C69B4C" stroke-width="2"/>
+          <path d="M20 65 Q50 85 80 65" stroke="#5C7A72" stroke-width="2"/>
+          <circle cx="50" cy="50" r="4" fill="#C69B4C"/>
+          <line x1="20" y1="35" x2="20" y2="65" stroke="#C69B4C" stroke-width="1.2" opacity="0.5"/>
+          <line x1="80" y1="35" x2="80" y2="65" stroke="#5C7A72" stroke-width="1.2" opacity="0.5"/>
+        </svg>
+      </div>
+      <div class="about-text reveal">
+        <div class="eyebrow">عن أبو الصلح</div>
+        <h2 style="font-size:32px; color:var(--sand); margin-bottom:20px;">خبرة في قراءة الخلاف قبل قراءة الحل</h2>
+        <p>بدأ <strong>أبو الصلح</strong> رحلته في هذا المجال من قناعة بسيطة: أغلب الخلافات لا تحتاج حكماً بقدر ما تحتاج من يستمع للطرفين بإنصاف، ويعيد صياغة المشكلة بشكل يقبله الجميع.</p>
+        <p>اليوم، يقدّم استشارات فردية وورش تدريبية لأفراد ومؤسسات، تجمع بين أساليب الوساطة الحديثة وفهم عميق لطبيعة النزاعات في مجتمعنا.</p>
+        <div class="stat-row">
+          <div class="stat"><b>+300</b><span>جلسة استشارة ووساطة</span></div>
+          <div class="stat"><b>+40</b><span>ورشة تدريبية</span></div>
+          <div class="stat"><b>12</b><span>سنة خبرة</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">الخدمات</div>
+      <h2>ثلاث طرق للوصول إلى تفاهم</h2>
+      <p>اختر المسار الأقرب لموقفك، أو تواصل معنا لنساعدك في تحديد الأنسب.</p>
+    </div>
+    <div class="services-grid reveal">
+      <div class="service-card">
+        <span class="num">٠١</span>
+        <h3>استشارة فردية</h3>
+        <p>جلسة خاصة لمناقشة خلاف عائلي أو شخصي، وبناء خطة واقعية للوصول إلى تفاهم بين الأطراف.</p>
+      </div>
+      <div class="service-card">
+        <span class="num">٠٢</span>
+        <h3>وساطة ونزاعات تجارية</h3>
+        <p>إدارة جلسات صلح بين شركاء أو أطراف تجارية، بحياد كامل وحفاظ على مصلحة الطرفين.</p>
+      </div>
+      <div class="service-card">
+        <span class="num">٠٣</span>
+        <h3>ورش وتدريب جماعي</h3>
+        <p>برامج تدريبية لفرق العمل والمؤسسات على مهارات الحوار وإدارة الخلاف قبل تفاقمه.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">كيف نبدأ</div>
+      <h2>ثلاث خطوات بسيطة</h2>
+    </div>
+    <div class="steps reveal">
+      <div class="step">
+        <span class="step-num">01</span>
+        <h3>تواصل أولي</h3>
+        <p>تشرح موقفك باختصار عبر النموذج بالأسفل، ونرد عليك خلال يومي عمل.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">02</span>
+        <h3>جلسة استماع</h3>
+        <p>نستمع لجميع الأطراف على حدة، لفهم جذور الخلاف بعيداً عن ردود الفعل.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">03</span>
+        <h3>خطة الصلح</h3>
+        <p>نضع مقترحاً عملياً للتفاهم، ونتابع تنفيذه حتى يستقر الاتفاق.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="orders">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">اطلب خدمة</div>
+      <h2>أرسل طلبك مباشرة</h2>
+      <p>املأ بياناتك ونوع الطلب، وهيوصل لأبو الصلح فوراً عبر واتساب والبريد للرد عليك.</p>
+    </div>
+
+    <div class="orders-tabs reveal">
+      <button class="tab-btn active" data-tab="new" type="button">إرسال طلب جديد</button>
+      <button class="tab-btn" data-tab="history" type="button">طلباتي السابقة</button>
+    </div>
+
+    <div class="tab-panel active reveal" id="tab-new">
+      <form id="orderForm" novalidate>
+        <div class="row-2">
+          <div class="field" id="of-name">
+            <label for="orderName">الاسم</label>
+            <input type="text" id="orderName" placeholder="اسمك الكامل">
+            <div class="error-msg"></div>
+          </div>
+          <div class="field" id="of-phone">
+            <label for="orderPhone">رقم الهاتف</label>
+            <input type="text" id="orderPhone" placeholder="09XXXXXXXX">
+            <div class="error-msg"></div>
+          </div>
+        </div>
+        <div class="field" id="of-email">
+          <label for="orderEmail">البريد الإلكتروني</label>
+          <input type="text" id="orderEmail" placeholder="example@mail.com">
+          <div class="error-msg"></div>
+        </div>
+        <div class="field" id="of-type">
+          <label for="orderType">نوع الطلب</label>
+          <select id="orderType">
+            <option value="" disabled selected>اختر نوع الطلب</option>
+            <option value="برمجة لاب توب">برمجة لاب توب</option>
+            <option value="برمجة ديجيتال">برمجة ديجيتال</option>
+            <option value="توصيل كهرباء">توصيل كهرباء</option>
+            <option value="سباكة">سباكة</option>
+            <option value="إنشاء موقع">إنشاء موقع</option>
+            <option value="إنشاء تطبيق">إنشاء تطبيق</option>
+            <option value="طلب برنامج أو تطبيق">طلب برنامج أو تطبيق</option>
+          </select>
+          <div class="error-msg"></div>
+        </div>
+        <div class="field" id="of-notes">
+          <label for="orderNotes">ملاحظات</label>
+          <textarea id="orderNotes" rows="4" placeholder="اكتب أي تفاصيل إضافية عن طلبك..."></textarea>
+        </div>
+        <div class="field" id="of-rating">
+          <label>تقييمك لأبو الصلح</label>
+          <div class="star-rating" id="starRating">
+            <button type="button" data-value="1">★</button>
+            <button type="button" data-value="2">★</button>
+            <button type="button" data-value="3">★</button>
+            <button type="button" data-value="4">★</button>
+            <button type="button" data-value="5">★</button>
+          </div>
+          <input type="hidden" id="orderRating" value="0">
+        </div>
+        <button type="submit" class="submit-btn" id="orderSubmitBtn">إرسال الطلب</button>
+        <div class="form-status success" id="orderStatus">تم تجهيز طلبك، جارٍ تحويلك لواتساب لإتمام الإرسال...</div>
+      </form>
+    </div>
+
+    <div class="tab-panel reveal" id="tab-history">
+      <div id="ordersList"></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="eyebrow">تواصل معنا</div>
+        <h2 style="font-size:32px; color:var(--sand); margin-bottom:18px;">احكِ لنا موقفك</h2>
+        <p>راسلنا بأي استفسار أو طلب، وسنعاود التواصل معك في أقرب وقت لتحديد الخطوة التالية.</p>
+        <div class="info-line"><span class="k">البريد</span><a class="v" href="mailto:contact@abualsolh.example">contact@abualsolh.example</a></div>
+        <div class="info-line"><span class="k">الهاتف</span><a class="v" href="tel:+249909323490">+249 909 323 490</a></div>
+        <div class="info-line"><span class="k">أوقات الرد</span><span class="v">الأحد – الخميس، 9 صباحاً – 5 مساءً</span></div>
+      </div>
+
+      <form id="contactForm" class="reveal" novalidate>
+        <div class="row-2">
+          <div class="field" id="field-name">
+            <label for="name">الاسم</label>
+            <input type="text" id="name" name="name" placeholder="اسمك الكامل">
+            <div class="error-msg"></div>
+          </div>
+          <div class="field" id="field-contact">
+            <label for="contactMethod">البريد أو رقم الجوال</label>
+            <input type="text" id="contactMethod" name="contactMethod" placeholder="example@mail.com">
+            <div class="error-msg"></div>
+          </div>
+        </div>
+        <div class="field" id="field-subject">
+          <label for="subject">الموضوع</label>
+          <input type="text" id="subject" name="subject" placeholder="مثال: استشارة نزاع عائلي">
+          <div class="error-msg"></div>
+        </div>
+        <div class="field" id="field-message">
+          <label for="message">الرسالة</label>
+          <textarea id="message" name="message" rows="5" placeholder="اكتب موقفك باختصار..."></textarea>
+          <div class="error-msg"></div>
+        </div>
+        <button type="submit" class="submit-btn" id="submitBtn">إرسال عبر واتساب</button>
+        <div class="form-status success" id="formStatus">جارٍ تحويلك لواتساب لإتمام الإرسال...</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-row">
+      <span>© 2026 أبو الصلح. جميع الحقوق محفوظة.</span>
+      <span>استشارات وتدريب على فض النزاعات والوساطة</span>
+    </div>
+  </div>
+</footer>
+
+<div class="quick-contact">
+  <a class="qc-btn qc-call" href="tel:+249909323490" aria-label="اتصال مباشر">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1L6.6 10.8z" stroke="#EFE6D3" stroke-width="1.5" stroke-linejoin="round"/>
+    </svg>
+  </a>
+  <a class="qc-btn qc-wa" href="https://wa.me/249909323490" target="_blank" rel="noopener" aria-label="تواصل عبر واتساب">
+    <span class="wa-ring"></span>
+    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M16.001 3C9.107 3 3.5 8.607 3.5 15.5c0 2.31.632 4.47 1.73 6.324L3.2 29l7.34-1.996A12.44 12.44 0 0016 28c6.894 0 12.5-5.607 12.5-12.5S22.895 3 16.001 3z" fill="#16242A"/>
+      <path d="M12.05 9.9c-.27-.6-.55-.61-.8-.62-.21-.01-.45-.01-.69-.01-.24 0-.63.09-.96.45-.33.36-1.26 1.23-1.26 3s1.29 3.48 1.47 3.72c.18.24 2.5 4 6.19 5.45 3.06 1.2 3.68.96 4.35.9.67-.06 2.16-.88 2.46-1.74.3-.85.3-1.58.21-1.74-.09-.15-.33-.24-.69-.42-.36-.18-2.16-1.07-2.5-1.19-.33-.12-.57-.18-.82.18-.24.36-.93 1.19-1.14 1.43-.21.24-.42.27-.78.09-.36-.18-1.53-.57-2.92-1.82-1.08-.97-1.81-2.17-2.02-2.53-.21-.36-.02-.56.16-.74.16-.16.36-.42.54-.63.18-.21.24-.36.36-.6.12-.24.06-.45-.03-.63-.09-.18-.79-1.99-1.13-2.72z" fill="#EFE6D3"/>
+    </svg>
+  </a>
+</div>
+
+<a href="#admin" class="admin-link">لوحة التحكم</a>
+
+<div class="admin-overlay" id="adminLoginOverlay">
+  <div class="admin-box">
+    <h3>دخول لوحة التحكم</h3>
+    <form id="adminLoginForm" novalidate>
+      <input type="password" id="adminPassword" placeholder="كلمة السر">
+      <div class="error-msg" id="adminLoginError"></div>
+      <button type="submit" class="submit-btn" style="width:100%;">دخول</button>
+    </form>
+  </div>
+</div>
+
+<div class="admin-panel" id="adminPanel">
+  <div class="wrap">
+    <div class="admin-header">
+      <h2>لوحة تحكم أبو الصلح</h2>
+      <button class="admin-close" id="adminCloseBtn" type="button">خروج</button>
+    </div>
+    <div id="adminOrdersList">
+      <div class="admin-empty">جارٍ تحميل الطلبات...</div>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import {
+    getFirestore, collection, addDoc, doc, getDoc, updateDoc,
+    getDocs, query, orderBy, serverTimestamp
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBX5WjCcjNMXHzQ-tZrjH3YfgjGTvLYs-4",
+    authDomain: "code-25cdf.firebaseapp.com",
+    projectId: "code-25cdf",
+    storageBucket: "code-25cdf.firebasestorage.app",
+    messagingSenderId: "883078136206",
+    appId: "1:883078136206:web:ec8e56f9343467da4424df",
+    measurementId: "G-BZSGJ1BTGF"
+  };
+  const fbApp = initializeApp(firebaseConfig);
+  const db = getFirestore(fbApp);
+
+  // Mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open);
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  // Hero knot path draw-in animation
+  window.addEventListener('DOMContentLoaded', () => {
+    [document.getElementById('pathA'), document.getElementById('pathB')].forEach((p, i) => {
+      const len = p.getTotalLength();
+      p.style.strokeDasharray = len;
+      p.style.strokeDashoffset = len;
+      p.style.transition = 'stroke-dashoffset 2.2s ease ' + (i * 0.3) + 's';
+      requestAnimationFrame(() => {
+        setTimeout(() => { p.style.strokeDashoffset = 0; }, 100);
+      });
+    });
+  });
+
+  // Form validation
+  const form = document.getElementById('contactForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const formStatus = document.getElementById('formStatus');
+
+  function setError(fieldId, msg) {
+    const field = document.getElementById(fieldId);
+    field.classList.toggle('error', !!msg);
+    field.querySelector('.error-msg').textContent = msg || '';
+  }
+
+  function isValidContact(val) {
+    const email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phone = /^[0-9+\s-]{7,}$/;
+    return email.test(val) || phone.test(val);
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    formStatus.classList.remove('show');
+
+    const name = document.getElementById('name').value.trim();
+    const contactMethod = document.getElementById('contactMethod').value.trim();
+    const subject = document.getElementById('subject').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    let valid = true;
+
+    if (name.length < 2) { setError('field-name', 'من فضلك أدخل اسمك كاملاً'); valid = false; }
+    else setError('field-name', '');
+
+    if (!isValidContact(contactMethod)) { setError('field-contact', 'أدخل بريد إلكتروني أو رقم جوال صحيح'); valid = false; }
+    else setError('field-contact', '');
+
+    if (subject.length < 3) { setError('field-subject', 'اكتب موضوع الرسالة'); valid = false; }
+    else setError('field-subject', '');
+
+    if (message.length < 10) { setError('field-message', 'الرسالة قصيرة جداً، أضف تفاصيل أكثر'); valid = false; }
+    else setError('field-message', '');
+
+    if (!valid) return;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'جارٍ التحويل...';
+    formStatus.classList.add('show');
+
+    const waNumber = '249909323490';
+    const waText =
+      'السلام عليكم، معي رسالة من موقع أبو الصلح:' + '\n' +
+      'الاسم: ' + name + '\n' +
+      'البريد/الجوال: ' + contactMethod + '\n' +
+      'الموضوع: ' + subject + '\n' +
+      'الرسالة: ' + message;
+
+    const waUrl = 'https://wa.me/' + waNumber + '?text=' + encodeURIComponent(waText);
+
+    setTimeout(() => {
+      window.open(waUrl, '_blank');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'إرسال عبر واتساب';
+      form.reset();
+    }, 500);
+  });
+
+  // ===== Orders section (Firestore-backed) =====
+  const OWNER_WA = '249909323490';
+  const OWNER_EMAIL = 'contact@abualsolh.example';
+  const MY_ORDER_IDS_KEY = 'abu_alsolh_order_ids';
+  const ORDERS_COLLECTION = 'orders';
+
+  // Tabs
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabPanels = { new: document.getElementById('tab-new'), history: document.getElementById('tab-history') };
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      Object.values(tabPanels).forEach(p => p.classList.remove('active'));
+      tabPanels[btn.dataset.tab].classList.add('active');
+      if (btn.dataset.tab === 'history') renderMyOrders();
+    });
+  });
+
+  // Star rating
+  const starButtons = document.querySelectorAll('#starRating button');
+  const orderRatingInput = document.getElementById('orderRating');
+  starButtons.forEach(star => {
+    star.addEventListener('click', () => {
+      const val = parseInt(star.dataset.value, 10);
+      orderRatingInput.value = val;
+      starButtons.forEach(s => s.classList.toggle('active', parseInt(s.dataset.value, 10) <= val));
+    });
+  });
+
+  // Local list of this customer's own order IDs (identifiers only)
+  function getMyOrderIds() {
+    try { return JSON.parse(localStorage.getItem(MY_ORDER_IDS_KEY)) || []; }
+    catch (e) { return []; }
+  }
+  function addMyOrderId(id) {
+    const ids = getMyOrderIds();
+    ids.unshift(id);
+    localStorage.setItem(MY_ORDER_IDS_KEY, JSON.stringify(ids));
+  }
+
+  async function renderMyOrders() {
+    const list = document.getElementById('ordersList');
+    const ids = getMyOrderIds();
+    if (!ids.length) {
+      list.innerHTML = '<div class="order-empty">لا يوجد لديك طلبات سابقة بعد.</div>';
+      return;
+    }
+    list.innerHTML = '<div class="order-empty">جارٍ التحميل...</div>';
+    const cards = [];
+    for (const id of ids) {
+      try {
+        const snap = await getDoc(doc(db, ORDERS_COLLECTION, id));
+        if (snap.exists()) {
+          const o = snap.data();
+          const isReplied = o.status === 'تم الرد';
+          cards.push(`
+            <div class="order-card">
+              <div class="order-card-head">
+                <span class="order-type">${o.type || ''}</span>
+                <span class="order-status">${o.status || 'بانتظار الرد'}</span>
+              </div>
+              <div class="order-meta">
+                <span>📞 ${o.phone || ''}</span>
+                ${o.rating > 0 ? '<span>⭐ ' + o.rating + '/5</span>' : ''}
+              </div>
+            </div>
+          `);
+        }
+      } catch (e) { /* skip failed reads */ }
+    }
+    list.innerHTML = cards.length ? cards.join('') : '<div class="order-empty">لا يوجد لديك طلبات سابقة بعد.</div>';
+  }
+
+  // Order form submit
+  const orderForm = document.getElementById('orderForm');
+  const orderSubmitBtn = document.getElementById('orderSubmitBtn');
+  const orderStatus = document.getElementById('orderStatus');
+
+  function setOrderError(fieldId, msg) {
+    const field = document.getElementById(fieldId);
+    field.classList.toggle('error', !!msg);
+    const errEl = field.querySelector('.error-msg');
+    if (errEl) errEl.textContent = msg || '';
+  }
+
+  orderForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    orderStatus.classList.remove('show');
+
+    const name = document.getElementById('orderName').value.trim();
+    const phone = document.getElementById('orderPhone').value.trim();
+    const email = document.getElementById('orderEmail').value.trim();
+    const type = document.getElementById('orderType').value;
+    const notes = document.getElementById('orderNotes').value.trim();
+    const rating = parseInt(orderRatingInput.value, 10) || 0;
+
+    let valid = true;
+    const phonePattern = /^[0-9+\s-]{7,}$/;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (name.length < 2) { setOrderError('of-name', 'من فضلك أدخل اسمك كاملاً'); valid = false; }
+    else setOrderError('of-name', '');
+
+    if (!phonePattern.test(phone)) { setOrderError('of-phone', 'أدخل رقم هاتف صحيح'); valid = false; }
+    else setOrderError('of-phone', '');
+
+    if (!emailPattern.test(email)) { setOrderError('of-email', 'أدخل بريد إلكتروني صحيح'); valid = false; }
+    else setOrderError('of-email', '');
+
+    if (!type) { setOrderError('of-type', 'اختر نوع الطلب'); valid = false; }
+    else setOrderError('of-type', '');
+
+    if (!valid) return;
+
+    orderSubmitBtn.disabled = true;
+    orderSubmitBtn.textContent = 'جارٍ الإرسال...';
+
+    try {
+      const docRef = await addDoc(collection(db, ORDERS_COLLECTION), {
+        name, phone, email, type, notes, rating,
+        status: 'بانتظار الرد',
+        createdAt: serverTimestamp()
+      });
+      addMyOrderId(docRef.id);
+      orderStatus.classList.add('show');
+    } catch (err) {
+      console.error('Order save failed', err);
+    }
+
+    const waText =
+      'طلب جديد من موقع أبو الصلح:' + '\n' +
+      'الاسم: ' + name + '\n' +
+      'رقم الهاتف: ' + phone + '\n' +
+      'البريد الإلكتروني: ' + email + '\n' +
+      'نوع الطلب: ' + type + '\n' +
+      'ملاحظات: ' + (notes || '-') + '\n' +
+      'التقييم: ' + (rating > 0 ? rating + '/5' : '-');
+
+    const waUrl = 'https://wa.me/' + OWNER_WA + '?text=' + encodeURIComponent(waText);
+    const mailSubject = encodeURIComponent('طلب جديد: ' + type);
+    const mailBody = encodeURIComponent(waText);
+    const mailUrl = 'mailto:' + OWNER_EMAIL + '?subject=' + mailSubject + '&body=' + mailBody;
+
+    setTimeout(() => {
+      window.open(waUrl, '_blank');
+      window.location.href = mailUrl;
+
+      orderSubmitBtn.disabled = false;
+      orderSubmitBtn.textContent = 'إرسال الطلب';
+      orderForm.reset();
+      starButtons.forEach(s => s.classList.remove('active'));
+      orderRatingInput.value = 0;
+    }, 500);
+  });
+
+  // ===== Admin panel =====
+  const ADMIN_PASSWORD = 'abualsolh2026';
+  const adminLoginOverlay = document.getElementById('adminLoginOverlay');
+  const adminLoginForm = document.getElementById('adminLoginForm');
+  const adminPanel = document.getElementById('adminPanel');
+  const adminCloseBtn = document.getElementById('adminCloseBtn');
+
+  function checkAdminHash() {
+    if (window.location.hash === '#admin') {
+      adminLoginOverlay.classList.add('show');
+    }
+  }
+  window.addEventListener('hashchange', checkAdminHash);
+  checkAdminHash();
+
+  adminLoginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const pass = document.getElementById('adminPassword').value;
+    const errEl = document.getElementById('adminLoginError');
+    if (pass === ADMIN_PASSWORD) {
+      errEl.textContent = '';
+      adminLoginOverlay.classList.remove('show');
+      adminPanel.classList.add('show');
+      loadAdminOrders();
+    } else {
+      errEl.textContent = 'كلمة السر غير صحيحة';
+    }
+  });
+
+  adminCloseBtn.addEventListener('click', () => {
+    adminPanel.classList.remove('show');
+    window.location.hash = '';
+  });
+
+  async function loadAdminOrders() {
+    const list = document.getElementById('adminOrdersList');
+    list.innerHTML = '<div class="admin-empty">جارٍ تحميل الطلبات...</div>';
+    try {
+      const q = query(collection(db, ORDERS_COLLECTION), orderBy('createdAt', 'desc'));
+      const snap = await getDocs(q);
+      if (snap.empty) {
+        list.innerHTML = '<div class="admin-empty">لا توجد طلبات حتى الآن.</div>';
+        return;
+      }
+      list.innerHTML = '';
+      snap.forEach(docSnap => {
+        const o = docSnap.data();
+        const id = docSnap.id;
+        const isReplied = o.status === 'تم الرد';
+        const card = document.createElement('div');
+        card.className = 'admin-order-card';
+        card.innerHTML = `
+          <div class="admin-order-top">
+            <div>
+              <div class="admin-order-name">${o.name || ''}</div>
+              <div class="admin-order-type">${o.type || ''}</div>
+            </div>
+            <span class="admin-status-badge ${isReplied ? 'replied' : ''}">${o.status || 'بانتظار الرد'}</span>
+          </div>
+          <div class="admin-order-details">
+            <span>📞 ${o.phone || ''}</span>
+            <span>✉️ ${o.email || ''}</span>
+            ${o.rating > 0 ? '<span>⭐ ' + o.rating + '/5</span>' : ''}
+          </div>
+          ${o.notes ? '<div class="admin-order-notes">' + o.notes + '</div>' : ''}
+          <button class="admin-mark-btn" ${isReplied ? 'disabled' : ''} data-id="${id}">
+            ${isReplied ? 'تم الرد بالفعل' : 'تحديد كـ "تم الرد"'}
+          </button>
+        `;
+        const btn = card.querySelector('.admin-mark-btn');
+        btn.addEventListener('click', async () => {
+          btn.disabled = true;
+          btn.textContent = 'جارٍ التحديث...';
+          try {
+            await updateDoc(doc(db, ORDERS_COLLECTION, id), { status: 'تم الرد' });
+            btn.textContent = 'تم الرد بالفعل';
+            card.querySelector('.admin-status-badge').textContent = 'تم الرد';
+            card.querySelector('.admin-status-badge').classList.add('replied');
+          } catch (err) {
+            btn.disabled = false;
+            btn.textContent = 'حدث خطأ، حاول تاني';
+          }
+        });
+        list.appendChild(card);
+      });
+    } catch (err) {
+      list.innerHTML = '<div class="admin-empty">تعذر تحميل الطلبات، تأكدي من الاتصال بالإنترنت.</div>';
+    }
+  }
+</script>
+
+</body>
+</html>
